@@ -13,7 +13,7 @@ const conexion = async() =>{
         //useUnifiedTopology: True
         //useCreateIndex: True
 
-        console.log("Conectado correctamente a la base de datos de mi Blog JP DATA SYSTEMS");
+        console.log("Conectado correctamente a la base de datos MongoDb de mi Blog JP DATA SYSTEMS");
 
 
     }catch(error){
