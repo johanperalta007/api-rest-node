@@ -1,0 +1,64 @@
+# Dependencias de Node.js
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Entorno del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales y de intercambio
+*.swp
+*.tmp
+*.temp
+*.bak
+*.old
+
+# Directorios de cobertura de pruebas
+coverage/
+
+# Archivos de configuración de entornos (incluye env.example si lo usas)
+.env
+.env.*       # Ignora cualquier variante de archivos .env, por ejemplo, .env.development
+
+# Caché de npm
+.npm/
+
+# Caché de yarn
+.yarn/
+.pnp.*
+
+# Archivos de dist (si usas compiladores o herramientas de build)
+dist/
+build/
+
+# Archivos de configuración de IDEs y editores
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Directorios de datos temporales
+tmp/
+temp/
+
+# Archivos lock (opcional, si no quieres incluirlo)
+package-lock.json
+yarn.lock
+
+# Directorios de ejecución de procesos (opcional)
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Archivos relacionados con MongoDB (opcional)
+*.mongodb
+
+# Otros archivos de sistema o configuración opcional
+.eslintcache
