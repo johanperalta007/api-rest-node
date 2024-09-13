@@ -21,6 +21,13 @@ app.use(express.json()); // Es un Middleware, va tener los datos disponibles com
 
 //Rutas
 
+const rutas_articulo = require("./rutas/articulo");
+
+app.use("/api", rutas_articulo);
+
+
+
+//Rutas de pruebas Dummies
 app.get("/probando", (req, res)=>{
     console.log("Se ha ejecutado el Enpoint probando");
 
@@ -43,6 +50,9 @@ app.get("/", (req, res)=>{
         "<h1>Empezando a crear una API Rest con Node</h1>"
     );
 });
+
+
+
 
 //Crear servidor y escuchar peticiones http
 app.listen(puerto, () => {
