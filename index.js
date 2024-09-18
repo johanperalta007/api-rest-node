@@ -19,9 +19,11 @@ app.use(cors());
 //Convertir Body a Objeto js 
 app.use(express.json()); // Es un Middleware, va tener los datos disponibles como onjeto javascript usable
 
+app.use(express.urlencoded({extended: true })); // Recibe datos por x-www-form-urlencoded
+
 //Rutas
 
-const rutas_articulo = require("./rutas/articulo");
+const rutas_articulo = require("./rutas/Articulo");
 
 app.use("/api", rutas_articulo);
 
