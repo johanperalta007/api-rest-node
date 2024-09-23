@@ -1,5 +1,7 @@
 const validator = require("validator");
 const Articulo = require("../modelos/Articulo");
+const mongoose = require('mongoose');
+
 
 const prueba = (rwe, res) => {
     return res.status(200).json({
@@ -106,9 +108,83 @@ const consultarArticulos = async (req, res) => {
     }
 }
 
+const unArticulo = async (req, res) => {
+    // Recoger el id de la URL
+    let id = req.params.id;
+
+    // Validar que el ID es válido
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({
+            status: "error",
+            mensaje: "ID no válido",
+        });
+    }
+
+    try {
+        // Buscar el artículo en la base de datos
+        const articulo = await Articulo.findById(id);
+
+        // Si el artículo no existe, devolver error
+        if (!articulo) {
+            return res.status(404).json({
+                status: "error",
+                mensaje: "No se ha encontrado el artículo",
+            });
+        }
+
+        // Devolver el artículo si se encuentra
+        return res.status(200).json({
+            status: "success",
+            articulo
+        });
+    } catch (error) {
+        // Manejo de cualquier otro error
+        return res.status(500).json({
+            status: "error",
+            mensaje: "Error al obtener el artículo",
+        });
+    }
+}
+
+const borrar = async (req, res) => {
+    let articulo_id = req.params.id;
+
+    // Validar que el ID es válido
+    if (!mongoose.Types.ObjectId.isValid(articulo_id)) {
+        return res.status(400).json({
+            status: "error",
+            mensaje: "ID no válido",
+        });
+    }
+
+    try {
+        const articuloBorrado = await Articulo.findOneAndDelete({ _id: articulo_id });
+
+        if (!articuloBorrado) {
+            return res.status(404).json({
+                status: "error",
+                mensaje: "No se encontró el artículo para borrar",
+            });
+        }
+
+        return res.status(200).json({
+            status: "success",
+            articulo: articuloBorrado,
+            mensaje: "Artículo eliminado con éxito"
+        });
+    } catch (error) {
+        return res.status(500).json({
+            status: "error",
+            mensaje: "Error al intentar borrar el artículo"
+        });
+    }
+}
+
 module.exports = {
     prueba,
     curso,
     crear,
-    consultarArticulos
+    consultarArticulos,
+    unArticulo,
+    borrar
 }
